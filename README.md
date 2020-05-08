@@ -12,23 +12,23 @@
 
 1. pull
 
-在自动编译后，拉取下来
+   在自动构建后，拉取下来
 
-```sh
-docker pull nnzbz/spring-boot-app
-```
+   ```sh
+   docker pull nnzbz/spring-boot-app
+   ```
 
-2. tag
+2. tag(注意修改**xxx**为当前版本号)
 
-```sh
-docker tag nnzbz/spring-boot-app:latest nnzbz/spring-boot-app:1.0.0
-```
+   ```sh
+   docker tag nnzbz/spring-boot-app:latest nnzbz/spring-boot-app:xxx
+   ```
 
-3. push
+3. push(注意修改**xxx**为当前版本号)
 
-```sh
-docker push nnzbz/spring-boot-app:1.0.0
-```
+   ```sh
+   docker push nnzbz/spring-boot-app:xxx
+   ```
 
 ## 3. 创建并运行容器
 
