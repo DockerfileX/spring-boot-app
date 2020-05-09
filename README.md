@@ -1,6 +1,12 @@
 # Spring Boot App
 
-## 1. 特性
+## 1. 简介
+
+Environment for **Spring Boot** Appication
+
+为运行 **Spring Boot** 应用而提供的环境
+
+## 2. 特性
 
 1. CentOS 7
 2. JDK 8
@@ -8,7 +14,7 @@
 4. en_US.UTF-8
 5. 运行的jar包：/usr/local/myservice/myservice.jar
 
-## 2. 拉取与制作标签
+## 3. 拉取与制作标签
 
 1. pull
 
@@ -30,7 +36,7 @@
    docker push nnzbz/spring-boot-app:xxx
    ```
 
-## 3. 创建并运行容器
+## 4. 创建并运行容器
 
 ```sh
 docker run -d --net=host --name 容器名称 -v /usr/local/外部程序所在目录:/usr/local/myservice --restart=always nnzbz/spring-boot-app
