@@ -8,33 +8,26 @@ Environment for **Spring Boot** Appication
 
 ## 2. 特性
 
-1. CentOS 7
-2. JDK 8
+1. Alpine
+2. OpenJDK 8
 3. TZ=Asia/Shanghai
-4. en_US.UTF-8
+4. C.UTF-8
 5. 运行的jar包：/usr/local/myservice/myservice.jar
 
-## 3. 拉取与制作标签
+## 3. 编译
 
-1. pull
+```sh
+docker build -t nnzbz/spring-boot-app:1.0.6 .
+# latest
+docker tag nnzbz/spring-boot-app:1.0.6 nnzbz/spring-boot-app:latest
+```
 
-   在自动构建后，拉取下来
+## 3. 上传镜像
 
-   ```sh
-   docker pull nnzbz/spring-boot-app
-   ```
-
-2. tag(注意修改**xxx**为当前版本号)
-
-   ```sh
-   docker tag nnzbz/spring-boot-app:latest nnzbz/spring-boot-app:xxx
-   ```
-
-3. push(注意修改**xxx**为当前版本号)
-
-   ```sh
-   docker push nnzbz/spring-boot-app:xxx
-   ```
+```sh
+docker push nnzbz/spring-boot-app:1.0.6
+docker push nnzbz/spring-boot-app:latest
+```
 
 ## 4. 创建并运行容器
 
