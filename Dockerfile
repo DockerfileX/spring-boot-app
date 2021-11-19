@@ -1,5 +1,5 @@
 # 基础镜像
-FROM nnzbz/openjdk
+FROM --platform=${TARGETPLATFORM} nnzbz/openjdk
 
 # 作者及邮箱
 # 镜像的作者和邮箱
@@ -16,4 +16,4 @@ WORKDIR /usr/local/myservice
 ENV JAVA_OPTS=""
 
 # 运行服务
-ENTRYPOINT ["/bin/bash", "-c", "java ${JAVA_OPTS} -cp . -Djava.security.egd=file:/dev/./urandom -XX:+UseG1GC -server -jar myservice.jar ${PROG_ARGS}"]
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -cp . -Djava.security.egd=file:/dev/./urandom -XX:+UseG1GC -server -jar myservice.jar ${PROG_ARGS}"]

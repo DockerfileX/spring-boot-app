@@ -14,19 +14,12 @@ Environment for **Spring Boot** Appication
 4. C.UTF-8
 5. 运行的jar包：/usr/local/myservice/myservice.jar
 
-## 3. 编译
+## 3. 编译并上传镜像
 
 ```sh
-docker build -t nnzbz/spring-boot-app:1.0.6 .
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:1.0.6 . --push
 # latest
-docker tag nnzbz/spring-boot-app:1.0.6 nnzbz/spring-boot-app:latest
-```
-
-## 3. 上传镜像
-
-```sh
-docker push nnzbz/spring-boot-app:1.0.6
-docker push nnzbz/spring-boot-app:latest
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:latest . --push
 ```
 
 ## 4. 创建并运行容器
