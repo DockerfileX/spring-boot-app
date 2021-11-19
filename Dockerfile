@@ -17,5 +17,7 @@ WORKDIR ${WORKDIR}
 
 ENV JAVA_OPTS=""
 
+ENV MYSERVICE_FILE_NAME=myservice.jar
+
 # 运行服务
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -cp . -Djava.security.egd=file:/dev/./urandom -XX:+UseG1GC -server -jar myservice.jar ${PROG_ARGS}"]
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -cp . -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -XX:+UseG1GC -server -jar ${MYSERVICE_FILE_NAME} ${PROG_ARGS}"]
