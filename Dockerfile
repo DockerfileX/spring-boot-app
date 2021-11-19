@@ -11,7 +11,9 @@ LABEL description="Environment for Spring Boot Appication\
 为运行Spring Boot Application而提供的环境"
 
 # 设置工作目录
-WORKDIR /usr/local/myservice
+ENV WORKDIR=/usr/local/myservice
+RUN mkdir -p ${WORKDIR}
+WORKDIR ${WORKDIR}
 
 ENV JAVA_OPTS=""
 
