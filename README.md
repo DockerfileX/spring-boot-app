@@ -17,7 +17,7 @@ Environment for **Spring Boot** Appication
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:1.0.6 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:1.0.7 . --push
 # latest
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:latest . --push
 ```
