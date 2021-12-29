@@ -32,10 +32,10 @@ docker run -d --net=host --name 容器名称 --init -v /usr/local/外部程序�
 
 ## 5. Swarm
 
-```yaml
+```yaml{.line-numbers}
 version: "3.9"
 services:
-  rac-svr:
+  xxx-svr:
     image: nnzbz/spring-boot-app
     init: true
     environment:
@@ -43,8 +43,8 @@ services:
       #- JAVA_OPTS=-Xms100M -Xmx100M
     volumes:
       # 配置文件目录
-      - /usr/local/rac-svr/config/:/usr/local/myservice/config/
-      - /usr/local/rac-svr/rac-svr-1.2.4.jar:/usr/local/myservice/myservice.jar
+      - /usr/local/xxx-svr/config/:/usr/local/myservice/config/:z
+      - /usr/local/xxx-svr/xxx-svr-x.x.x.jar:/usr/local/myservice/myservice.jar:z
     deploy:
       replicas: 3
 
