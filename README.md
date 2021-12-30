@@ -46,7 +46,8 @@ services:
       - /usr/local/xxx-svr/config/:/usr/local/myservice/config/:z
       - /usr/local/xxx-svr/xxx-svr-x.x.x.jar:/usr/local/myservice/myservice.jar:z
     deploy:
-      replicas: 3
+      # 默认副本数先设置为1，启动好后再用 scale 调整，以防第一次启动初始化时并发建表
+      replicas: 1
 
 networks:
   default:
