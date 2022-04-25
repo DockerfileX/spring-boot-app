@@ -1,11 +1,13 @@
 # 基础镜像
 FROM --platform=${TARGETPLATFORM} nnzbz/openjdk
 
+ARG VERSION
+
 # 作者及邮箱
 # 镜像的作者和邮箱
 LABEL maintainer="nnzbz@163.com"
 # 镜像的版本
-LABEL version="1.0.9"
+LABEL version=${VERSION}
 # 镜像的描述
 LABEL description="Environment for Spring Boot Appication\
     为运行Spring Boot Application而提供的环境"
