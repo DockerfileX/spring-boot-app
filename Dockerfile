@@ -1,6 +1,9 @@
-# 基础镜像
-FROM --platform=${TARGETPLATFORM} nnzbz/openjdk
+ARG VERSION
 
+# 基础镜像
+FROM --platform=${TARGETPLATFORM} nnzbz/openjdk:${VERSION}
+
+# 如果这里不重复定义参数，后面会取不到参数的值
 ARG VERSION
 
 # 作者及邮箱
