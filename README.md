@@ -8,24 +8,26 @@ Environment for **Spring Boot** Appication
 
 ## 2. 特性
 
-1. Alpine
-2. OpenJDK 8
+1. Ubuntu/Alpine
+2. OpenJDK 8/17/21
 3. TZ=Asia/Shanghai
 4. C.UTF-8
 5. curl和telnet
 6. arthas(在/usr/local/arthas目录下)
-7. SkyWalking Agent(在/usr/local/skywalking/agent目录下)
-8. 运行的jar包：/usr/local/myservice/myservice.jar
+7. 运行的jar包：/usr/local/myservice/myservice.jar
 
 ## 3. 编译并上传镜像
 
 ```sh
 # JDK8
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:8 --build-arg VERSION=8 . --push
-# latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:latest --build-arg VERSION=8 . --push
-# JDK18
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:18 --build-arg VERSION=18 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:8-alpine --build-arg VERSION=8-alpine . --push
+# JDK17
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:17 --build-arg VERSION=17 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:17-alpine --build-arg VERSION=17-alpine . --push
+# JDK21
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:21 --build-arg VERSION=21 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/spring-boot-app:21-alpine --build-arg VERSION=21-alpine . --push
 ```
 
 ## 4. 单机

@@ -1,7 +1,7 @@
 ARG VERSION
 
 # 基础镜像
-FROM --platform=${TARGETPLATFORM} nnzbz/openjdk:${VERSION}
+FROM --platform=${TARGETPLATFORM} nnzbz/temurinx:${VERSION}
 
 # 如果这里不重复定义参数，后面会取不到参数的值
 ARG VERSION
