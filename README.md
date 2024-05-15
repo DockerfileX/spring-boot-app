@@ -38,26 +38,6 @@ docker run -d --net=host --name 容器名称 --init -v /usr/local/外部程序�
 
 ## 5. Swarm
 
-- 初始化 `SkyWalking Agent` 插件的脚本
-
-```sh
-#!/bin/sh
-#####################################################################################
-# Docker容器启动时要运行的脚本 															#
-#####################################################################################
-# 添加插件
-mv ${SKYWALKING_AGENT_DIR}/optional-plugins/apm-mybatis-3.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/plugins/
-mv ${SKYWALKING_AGENT_DIR}/optional-plugins/apm-spring-webflux-5.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/plugins/
-mv ${SKYWALKING_AGENT_DIR}/optional-plugins/apm-trace-ignore-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/plugins/
-# 移除不用的插件
-mv ${SKYWALKING_AGENT_DIR}/plugins/dubbo-3.x-conflict-patch-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-mv ${SKYWALKING_AGENT_DIR}/plugins/apm-dubbo-3.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-mv ${SKYWALKING_AGENT_DIR}/plugins/apm-springmvc-annotation-3.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-mv ${SKYWALKING_AGENT_DIR}/plugins/apm-springmvc-annotation-4.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-mv ${SKYWALKING_AGENT_DIR}/plugins/apm-springmvc-annotation-5.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-mv ${SKYWALKING_AGENT_DIR}/plugins/apm-mysql-6.x-plugin-${SKYWALKING_AGENT_VERSION}.jar ${SKYWALKING_AGENT_DIR}/optional-plugins/
-```
-
 - Docker Compose
 
 ```yaml{.line-numbers}
@@ -68,18 +48,10 @@ services:
     init: true
     environment:
       - PROG_ARGS=--spring.profiles.active=prod
-      # 启用SkyWalking Agent
-      - ENABLE_SKYWALKING_AGENT=true
-      # Agent的项目名称
-      - SW_AGENT_NAME=xxx-svr
-      # SkyWalking OAP 服务器的地址
-      - SW_AGENT_COLLECTOR_BACKEND_SERVICES=skywalking-oap:11800
       #- JAVA_OPTS=-Xms100M -Xmx100M
     volumes:
       # 初始化脚本
       - /usr/local/xxx-svr/init.sh:/usr/local/myservice/init.sh:z
-      # SkyWalking Agent的配置文件
-      - /usr/local/xxx-svr/config/apm-trace-ignore-plugin.config:/usr/local/skywalking/agent/config/apm-trace-ignore-plugin.config:z
       # 配置文件目录
       - /usr/local/xxx-svr/config/:/usr/local/myservice/config/:z
       # 运行的jar包

@@ -32,9 +32,6 @@ ENV MYSERVICE_FILE_NAME=myservice.jar
 RUN touch init.sh
 RUN echo '#!/bin/sh' >> entrypoint.sh
 RUN echo 'set +e' >> entrypoint.sh
-RUN echo 'if [ ${ENABLE_SKYWALKING_AGENT:false} ];then' >> entrypoint.sh
-RUN echo '    export JAVA_AGENT=-javaagent:${SKYWALKING_AGENT_DIR}/skywalking-agent.jar' >> entrypoint.sh
-RUN echo 'fi' >> entrypoint.sh
 RUN echo 'sh ./init.sh' >> entrypoint.sh
 RUN echo 'CMD="java ${JAVA_OPTS} -cp . ${SYS_PROP} -Djava.security.egd=file:/dev/./urandom -XX:+UseG1GC -server ${JAVA_AGENT} -jar ${WORKDIR}/${MYSERVICE_FILE_NAME} ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo $CMD' >> entrypoint.sh
