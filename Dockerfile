@@ -31,7 +31,7 @@ RUN echo 'set +e' >> entrypoint.sh
 RUN echo 'sh ./init.sh' >> entrypoint.sh
 RUN echo 'CMD="java ${JAVA_OPTS} -jar ${MYSERVICE_FILE_NAME} ${PROG_ARGS}"' >> entrypoint.sh
 RUN echo 'echo $CMD' >> entrypoint.sh
-RUN echo '$CMD' >> entrypoint.sh
+RUN echo 'exec $CMD' >> entrypoint.sh
 
 RUN chmod +x ./init.sh
 RUN chmod +x ./entrypoint.sh
